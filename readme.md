@@ -81,17 +81,22 @@ The core challenge is extracting *understanding* from a codebase without exceedi
 
 ### What is skipped
 
-- **Lock files** (`package-lock.json`, `yarn.lock`, `poetry.lock`, etc.) — fully redundant given manifests, but expensive in tokens
-- **Binary and media files** — images, fonts, compiled artifacts, archives
-- **Generated code** — protobuf outputs, migration files, minified bundles, source maps
-- **Vendor/dependency directories** — `node_modules/`, `vendor/`, `dist/`, `build/`, `__pycache__/`
-- **Test fixtures and data files** — large JSON/YAML fixtures, snapshots
+- **Lock files** (`package-lock.json`, `yarn.lock`, `poetry.lock`, etc.)
+- - Fully redundant given manifests, but expensive in tokens
+- **Binary and media files**
+- - Images, fonts, compiled artifacts, archives
+- **Generated code**
+- - Protobuf outputs, migration files, minified bundles, source maps
+- **Vendor/dependency directories**
+- - `node_modules/`, `vendor/`, `dist/`, `build/`, `__pycache__/`
+- **Test fixtures and data files**
+- - Large JSON/YAML fixtures, snapshots
 
 ### Budget management
 
 I maintain a **70,000 character budget** (~18k tokens), leaving headroom for the prompt scaffolding and the model's response.
 
-Within each tier, files are sorted by size **ascending** — I prefer including *more smaller files* over *fewer large ones*. Breadth of coverage across the codebase gives the LLM better overall understanding than reading one large file in full.
+Within each tier, files are sorted by size **ascending**. I prefer including *more smaller files* over *fewer large ones*. Breadth of coverage across the codebase gives the LLM better overall understanding than reading one large file in full.
 
 Tier 1 and 2 files are always included regardless of budget, since they're almost always small and carry the highest value.
 
@@ -101,4 +106,4 @@ Files exceeding 6,000 characters are truncated from the **bottom**, not arbitrar
 
 ### Directory tree
 
-The full filtered directory tree is always included as plain text before file contents. It costs very few tokens but gives the LLM the overall shape of the project — module boundaries, naming conventions, monorepo vs. single package, test layout — none of which requires reading individual file contents.
+The full filtered directory tree is always included as plain text before file contents. It costs very few tokens but gives the LLM the overall shape of the project (module boundaries, naming conventions, monorepo vs. single package, test layout, none of which requires reading individual file contents).
