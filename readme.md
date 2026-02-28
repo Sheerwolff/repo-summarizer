@@ -73,7 +73,7 @@ The core challenge is extracting *understanding* from a codebase without exceedi
 
 | Tier | Files | Rationale |
 |------|-------|-----------|
-| 1 | `README`, `ARCHITECTURE`, `CONTRIBUTING`, `CHANGELOG` | Written specifically to explain the project — highest signal per token |
+| 1 | `README`, `ARCHITECTURE`, `CONTRIBUTING`, `CHANGELOG` | Written specifically to explain the project (highest signal per token) |
 | 2 | Dependency manifests (`package.json`, `pyproject.toml`, `Cargo.toml`, `go.mod`, etc.), `Dockerfile`, `docker-compose.yml` | A single manifest file reveals language, framework, all major dependencies, and deployment model |
 | 3 | Entry points (`main.py`, `app.py`, `index.js`, `server.go`, `__main__.py`, etc.) | Shows how the project wires together at startup |
 | 4 | CI/infrastructure configs (`.github/workflows/`, `Makefile`, `nginx.conf`) | Reveals deployment context, test strategy, build system |
